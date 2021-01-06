@@ -25,9 +25,7 @@ namespace WeatherForecastConsumer
         {
             services.AddControllers();
 
-            services
-                .AddScoped<IWeatherForecastService, WeatherForecastService>()
-                .AddWeatherForecastService(new Uri(Configuration["WeatherForecastApiUrl"]));
+            services.AddWeatherForecastService(new Uri(Configuration["WeatherForecastApiUrl"]));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
