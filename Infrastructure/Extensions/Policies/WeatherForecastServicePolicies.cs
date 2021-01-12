@@ -1,8 +1,7 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using Polly;
+﻿using Polly;
 using Polly.Extensions.Http;
+using System;
+using System.Net.Http;
 
 namespace Infrastructure.Extensions.Policies
 {
@@ -12,18 +11,22 @@ namespace Infrastructure.Extensions.Policies
         {
             return HttpPolicyExtensions
                 .HandleTransientHttpError()
-                .OrResult(msg => msg.StatusCode == HttpStatusCode.NotFound)
-                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+                .OrResult(msg => msg.StatusCode != System.Net.HttpStatusCode.OK)
+                .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(3), OnRetry);
+        }
+
+        private static void OnRetry(DelegateResult<HttpResponseMessage> exception, TimeSpan timeSpan, Context context)
+        {
+            Console.WriteLine("###  Retrying  ###");
         }
 
         public static IAsyncPolicy<HttpResponseMessage> CircuitBreakerPolicy()
         {
             return HttpPolicyExtensions
                 .HandleTransientHttpError()
-                .CircuitBreakerAsync(
-                    2,
-                    TimeSpan.FromSeconds(10)
-                );
+                .OrResult(msg => msg.StatusCode != System.Net.HttpStatusCode.OK)
+                .CircuitBreakerAsync(3, TimeSpan.FromSeconds(20));
         }
+
     }
 }

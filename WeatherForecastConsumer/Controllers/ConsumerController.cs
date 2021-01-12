@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Services;
+using Infrastructure.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading;
@@ -19,8 +20,10 @@ namespace WeatherForecastConsumer.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<WeatherForecast>> GetAll(CancellationToken cancellationToken)
+        public async Task<IEnumerable<WeatherForecast>> GetAll(CancellationToken cancellationToken, [FromQuery] bool success = true)
         {
+            TestHelper.MustFail = success;
+
             return await _weatherForecastService.GetAll(cancellationToken);
         }
     }

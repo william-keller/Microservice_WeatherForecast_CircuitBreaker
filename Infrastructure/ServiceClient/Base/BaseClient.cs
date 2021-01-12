@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Domain.ServiceClients.Base;
+using Infrastructure.Helpers;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Domain.ServiceClients.Base;
-using Newtonsoft.Json;
+using System.Web;
 
 namespace Infrastructure.ServiceClient.Base
 {
@@ -21,6 +24,7 @@ namespace Infrastructure.ServiceClient.Base
         public async Task<T> GetAsync<T>(Uri uri, CancellationToken cancellationToken)
         {
             var result = await _client.GetAsync(uri, cancellationToken);
+            
             result.EnsureSuccessStatusCode();
 
             return JsonConvert.DeserializeObject<T>(await result.Content.ReadAsStringAsync());
@@ -28,10 +32,18 @@ namespace Infrastructure.ServiceClient.Base
 
         public Uri BuildUri(string format)
         {
-            return new UriBuilder(_baseUri)
+            var builder = new UriBuilder(_baseUri)
             {
                 Path = format
-            }.Uri;
+            };
+
+            NameValueCollection query = HttpUtility.ParseQueryString(builder.Query);
+
+            query["success"] = TestHelper.MustFail.ToString();
+
+            builder.Query = query.ToString();
+
+            return builder.Uri;
         }
     }
 }

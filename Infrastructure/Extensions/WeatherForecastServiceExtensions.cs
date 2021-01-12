@@ -15,8 +15,7 @@ namespace Infrastructure.Extensions
             services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 
             services.AddHttpClient<IWeatherForecastClient, WeatherForecastClient>(client => { client.BaseAddress = uri; })
-                .SetHandlerLifetime(TimeSpan.FromMinutes(2))
-                //.AddPolicyHandler(WeatherForecastServicePolicies.RetryPolicy())
+                .AddPolicyHandler(WeatherForecastServicePolicies.RetryPolicy())
                 .AddPolicyHandler(WeatherForecastServicePolicies.CircuitBreakerPolicy());
 
             return services;

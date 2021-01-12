@@ -15,10 +15,18 @@ namespace WeatherForecast.Controllers
         };
 
         [HttpGet]
-        public ActionResult<IEnumerable<Domain.Entities.WeatherForecast>> Get()
+        public ActionResult<IEnumerable<Domain.Entities.WeatherForecast>> Get([FromQuery] bool success = true)
         {
+            if (!success) 
+            {
+                Console.WriteLine($" ###  BAD REQUEST  ### {DateTime.Now:HH:mm:ss}");
+                return BadRequest();
+            }
+
+            Console.WriteLine($" ###  OK - 200     ### {DateTime.Now:HH:mm:ss}");
+
             var rng = new Random();
-            
+
             var items = Enumerable.Range(1, 5).Select(index => new Domain.Entities.WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
