@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="yes"?>
+<alunos>
+  <aluno>
+    <codigo>10</codigo>
+    <nome>Jimmi</nome>
+    <curso>Musica</curso>
+    <mensalidade>1000</mensalidade>
+    <foto>menina.jpg</foto>
+  </aluno>
+  <aluno>
+    <codigo>20</codigo>
+    <nome>Hendrix</nome>
+    <curso>Musica</curso>
+    <mensalidade>2000</mensalidade>
+    <foto>menina.jpg</foto>
+  </aluno>
+  <aluno>
+    <codigo>30</codigo>
+    <nome>Jimmi Hendrix</nome>
+    <curso>Musica</curso>
+    <mensalidade>3000</mensalidade>
+    <foto>menina.jpg</foto>
+  </aluno>
+  <aluno>
+    <codigo>40</codigo>
+    <nome>Jimmi</nome>
+    <curso>Musica</curso>
+    <mensalidade>4000</mensalidade>
+    <foto>menina.jpg</foto>
+  </aluno>
+  <aluno>
+    <codigo>50</codigo>
+    <nome>Hendrix</nome>
+    <curso>Musica</curso>
+    <mensalidade>5000</mensalidade>
+    <foto>menina.jpg</foto>
+  </aluno>
+</alunos>

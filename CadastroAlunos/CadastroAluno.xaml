@@ -1,0 +1,54 @@
+﻿<Window x:Class="CadastroAlunos.CadastroAluno"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CadastroAlunos"
+        mc:Ignorable="d"
+        Title="Registro de Alunos" 
+        Height="400" 
+        Width="800">
+
+    <Grid Background="#FFC5C5C5" >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="88*"/>
+            <ColumnDefinition Width="63*"/>
+            <ColumnDefinition Width="728*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Código" Grid.Column="2" HorizontalAlignment="Left" Margin="204,34,0,0" VerticalAlignment="Top" Height="26" Width="49"/>
+        <Label Content="Nome" Grid.Column="2" HorizontalAlignment="Left" Margin="207,64,0,0" VerticalAlignment="Top" Height="26" Width="43"/>
+        <Label Content="Curso" Grid.Column="2" HorizontalAlignment="Left" Margin="212,100,0,0" VerticalAlignment="Top" Height="26" Width="41"/>
+        <Label Content="Mensalidade" Grid.Column="2" HorizontalAlignment="Left" Margin="189,130,0,0" VerticalAlignment="Top" Height="26" Width="77"/>
+
+        <TextBox Grid.Column="2" x:Name="txtCodigo" Text="" HorizontalAlignment="Left" Height="26" Margin="281,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+        <TextBox Grid.Column="2" x:Name="txtNome" Text="" HorizontalAlignment="Left" Height="26" Margin="281,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+        <TextBox Grid.Column="2" x:Name="txtCurso" Text="" HorizontalAlignment="Left" Height="26" Margin="281,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+        <TextBox Grid.Column="2" x:Name="txtMensalidade" Text="" HorizontalAlignment="Left" Height="26" Margin="281,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+
+        <Image Grid.Column="2" x:Name="picFoto" HorizontalAlignment="Left" Height="122" Margin="512,35,0,0" VerticalAlignment="Top" Width="116"/>
+
+        <Button Content=" |&lt;&lt;  " x:Name="btnPrimeiro" Click="BtnPrimeiro_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="302,230,0,0" VerticalAlignment="Top" Height="24" Width="33"/>
+        <Button Content="  &lt;  " x:Name="btnAnterior" Click="BtnAnterior_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="349,230,0,0" VerticalAlignment="Top" Height="24" Width="25"/>
+        <Button Content="  &gt;  " x:Name="btnProximo" Click="BtnProximo_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="388,230,0,0" VerticalAlignment="Top" Height="24" Width="25"/>
+        <Button Content="  &gt;&gt;|  " x:Name="btnUltimo" Click="BtnUltimo_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="435,230,0,0" VerticalAlignment="Top" Height="24" Width="36"/>
+
+        <Button Content="  Procurar Foto  " x:Name="btnLocalizarFoto" Click="BtnLocalizarFoto_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="526,171,0,0" VerticalAlignment="Top" Height="24" Width="89"/>
+
+        <Button Content=" Incluir  " x:Name="btnInlcuir" Click="BtnInlcuir_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="226,276,0,0" VerticalAlignment="Top" Height="24" Width="46"/>
+        <Button Content=" Procurar  " x:Name="btnProcurar" Click="BtnProcurar_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="309,276,0,0" VerticalAlignment="Top" Height="24" Width="58"/>
+        <Button Content=" Atualizar  " x:Name="btnAtualizar" Click="BtnAtualizar_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="405,276,0,0" VerticalAlignment="Top" Height="24" Width="60"/>
+        <Button Content=" Deletar  " x:Name="btnDeletar" Click="BtnDeletar_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="497,276,0,0" VerticalAlignment="Top" Height="24" Width="52"/>
+
+        <Button Content=" Carregar Arquivo XML  " x:Name="btnCarregaXML" Click="BtnCarregaXML_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="226,313,0,0" VerticalAlignment="Top" Height="24" Width="323"/>
+
+        <Button Content=" Limpar  " x:Name="btnLimpar" Click="BtnLimpar_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="589,276,0,0" VerticalAlignment="Top" Height="24" Width="50"/>
+        <Button Content=" Sair  " x:Name="btnSair" Click="BtnSair_OnClick" Grid.Column="2" HorizontalAlignment="Left" Margin="589,320,0,0" VerticalAlignment="Top" Height="24" Width="50"/>
+
+        <DataGrid x:Name="gdvAlunos" Margin="10,10,479,24" Grid.ColumnSpan="3"/>
+        <Label Content="" x:Name="lblErro" Visibility="Hidden" Background="AliceBlue" Grid.Column="2" HorizontalAlignment="Left" Margin="204,3,0,0" VerticalAlignment="Top" Foreground="Red"/>
+
+    </Grid>
+</Window>
